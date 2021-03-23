@@ -1,4 +1,4 @@
-# Zoopla Tech Challenge - Chituru Chinwah
+# LPG Tech Challenge - Chituru Chinwah
 ## Operating System
 Cypress is a desktop application that is installed on your computer. The desktop application supports these operating systems:
 - macOS 10.9 and above (64-bit only)
