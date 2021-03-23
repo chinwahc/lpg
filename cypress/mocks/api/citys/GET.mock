@@ -1,0 +1,29 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+transfer-encoding: chunked
+access-control-allow-origin: *
+access-control-allow-headers: *
+
+
+[
+  {
+    "id": 1,
+    "title": "New York"
+  },
+  {
+    "id": 2,
+    "title": "London"
+  },
+  {
+    "id": 3,
+    "title": "Los Angeles"
+  },
+  {
+    "id": 4,
+    "title": "Sydney"
+  },
+  {
+    "id": 5,
+    "title": "Paris"
+  }
+]

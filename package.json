@@ -1,0 +1,61 @@
+{
+	"name": "lpg-automated-tests",
+	"version": "1.0.0",
+	"description": "LPG Tech Challenge",
+	"main": "index.js",
+	"scripts": {
+		"cypress:run": "npx cypress run",
+		"cypress:open": "npx cypress open",
+		"start:mockserver": "mockserver -p 9001 -m cypress/mocks",
+		"lint": "eslint . --fix",
+		"pretty": "prettier --write \"./**/*.{js,json,html,css,xml}\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/chinwahc/lpg.git"
+	},
+	"author": "Chituru Chinwah",
+	"bugs": {
+		"url": "https://github.com/chinwahc/lpg.git/issues"
+	},
+	"homepage": "https://github.com/chinwahc/lpg.git#readme",
+	"devDependencies": {
+		"@prettier/plugin-xml": "^0.13.1",
+		"cypress": "^6.6.0",
+		"cypress-cucumber-preprocessor": "^4.0.1",
+		"eslint": "^7.22.0",
+		"eslint-config-prettier": "^8.1.0",
+		"eslint-plugin-prettier": "^3.3.1",
+		"lint-staged": "^10.5.4",
+		"minimist": "^1.2.5",
+		"mocha": "^8.3.2",
+		"mochawesome": "^6.2.2",
+		"mochawesome-merge": "^4.2.0",
+		"mochawesome-report-generator": "^5.2.0",
+		"mockserver": "^3.1.1",
+		"prettier": "^2.2.1",
+		"simple-git-hooks": "^2.2.0"
+	},
+	"cypress-cucumber-preprocessor": {
+		"nonGlobalStepDefinitions": false,
+		"step_definitions": "cypress/integration/step_definitions/**/*"
+	},
+	"dependencies": {
+		"chai": "latest",
+		"chai-sorted": "^0.2.0",
+		"child-process-ext": "^2.1.1",
+		"cypress": "^6.6.0",
+		"cypress-cucumber-preprocessor": "^4.0.1",
+		"mockserver": "^3.1.1",
+		"moment": "latest"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.(js|html|css|xml|json)": ["prettier --write", "git add"],
+		"*.js": ["eslint --fix", "git add"]
+	}
+}
