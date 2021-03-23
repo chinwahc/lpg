@@ -12,20 +12,24 @@ If you’re using npm to install Cypress, you'll need:
 ### GIT
 via ssh:
 ```$xslt
-git clone ssh:git@github.com:zoopla/Chituru-Chinwah.git
+git clone ssh:git@github.com:chinwahc/lpg.git
 ```
 via https:
 ```$xslt
-git clone https://github.com/zoopla/Chituru-Chinwah.git
+git clone https://github.com/chinwahc/lpg.git
 ```
 
 ### Installation
 Install Cypress via npm:
 ```bash
-$ cd Chituru-Chinwah
+$ cd lpg
 $ npm install
 ```
 ### Test Execution
+First start mockserver:
+```
+$ npm run start:mockserver
+```
 To run tests:
 ```$xslt
 $ npx cypress run
@@ -58,13 +62,26 @@ $ cypress run --config integrationFolder=tests,videoUploadOnPasses=false
 ```
 
 ### Folder Structure
-Feature file:
+API Feature files:
 ```
-cypress/integration/test.feature
+cypress/integration/features/API/api_tests.feature
 ```
-Step definitions:
+UI Feature files:
 ```
-cypress/integration/test/test-steps.js
+cypress/integration/features/UI/
+```
+
+API Step definitions:
+```
+cypress/integration/step-definitions/API/api_steps.js
+```
+UI Step definitions:
+```
+cypress/integration/step-definitions/UI/test_steps.js
+```
+Mock data:
+```
+cypress/mocks/api
 ```
 Page objects:
 ```
@@ -74,10 +91,31 @@ Page components:
 ```
 cypress/support/page-components
 ```
+Test report:
+```
+cypress/mochawesome-report/test-report.html
+```
 Screenshots on test failure:
 ```
 cypress/screenshots
 ```
+Config file:
+```
+cypress/cypress.json
+```
+
+### Summary
+#### API
+I decided to go with Cypress for both the API and UI as I felt this makes it a clean solution with both the UI and api able to share certain components such as mock-server etc. I added relevant tests to the api feature file which will all pass, in order to test the failure conditions feel free to modify the test values or mock data, the framework should record a screenshot on test failure which shows the request which caused the test to fail.
+
+#### UI
+I decided to go with the Page object pattern in combination with  cucumber for this as I felt it made writing tests for the website more readable. Due to time constraints, I was unable to add the actual test scenarios, but I have added required functions in the page objects to carry out certain actions and in turn added the step definitions which call said functions. I have tried to make the tests reusable, there is a lot of room for improvement due to time contraints. 
+
+#### Key journeys I would test
+- Going from selecting an all inclusive pass(due to the design of test steps all passes can be tested using cucumber scenario outlines) for x number of adults and children through to payment
+- Selecting an attraction, then following that jpurney through to completion, again designing the tests in a way that enables testing each tour type
+- Signing up for offers
+- Testing the cart by adding/removing items and checking price calculations
 
 
 
